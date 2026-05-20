@@ -5,8 +5,8 @@ class LinkShortener:
     def __init__(self):
         self.links = {}
       
-    """Метод для создания уникального случайного кода"""
     def _generate_code(self, length=4):
+        """Метод для создания уникального случайного кода"""
         characters = string.ascii_letters + string.digits
         while True:
             code = ''.join(random.choices(characters, k=length))
@@ -14,8 +14,8 @@ class LinkShortener:
             if code not in self.links:
                 return code
     
-    """Добавление новой ссылки"""
     def add_link(self, long_url):
+        """Добавление новой ссылки"""
         for code, url in self.links.items():
             if url == long_url:
                 return code
@@ -24,16 +24,16 @@ class LinkShortener:
         self.links[code] = long_url
         return code
       
-    """Получение длинной ссылки по коду"""
     def get_long_url(self, short_code):
+        """Получение длинной ссылки по коду"""
         return self.links.get(short_code, None)
 
-    """Проверка существования кода"""
     def code_exists(self, short_code):
+        """Проверка существования кода"""
         return short_code in self.links
-
-    """Вывод всех ссылок в исходном порядке"""    
+   
     def print_all_links(self):
+        """Вывод всех ссылок в исходном порядке""" 
         if not self.links:
             print("Хранилище пусто.")
             return
@@ -42,6 +42,7 @@ class LinkShortener:
             print(f"{code} -> {url}")
 
     def print_sorted_links(self):
+        """Вывод всех ссылок, отсортированных по короткому коду"""
         if not self.links:
             print("Хранилище пусто.")
             return
@@ -72,5 +73,3 @@ if __name__ == "__main__":
 
     # Вывод отсортированных ссылок
     shortener.print_sorted_links()
-
-

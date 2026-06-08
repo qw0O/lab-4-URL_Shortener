@@ -10,7 +10,6 @@ class LinkShortener:
         characters = string.ascii_letters + string.digits
         while True:
             code = ''.join(random.choices(characters, k=length))
-            # Проверка, что код не был сгенерирован ранее
             if code not in self.links:
                 return code
     
@@ -47,7 +46,6 @@ class LinkShortener:
             print("Хранилище пусто.")
             return
         print("\n--- Ссылки, отсортированные по короткому коду ---")
-        # Сортируем пары (ключ, значение) по ключу (короткому коду)
         sorted_pairs = sorted(self.links.items())
         for code, url in sorted_pairs:
             print(f"{code} -> {url}")
